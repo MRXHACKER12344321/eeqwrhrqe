@@ -1,0 +1,638 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", "Inter", sans-serif;
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom premium animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.dark .animate-shimmer {
+  background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: .85;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s infinite ease-in-out;
+}
+
+@keyframes float-badge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-float {
+  animation: float-badge 1.8s infinite ease-in-out;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  70% { transform: scale(0.9); }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Smooth custom slideup */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Dubbing ripple effect for premium action */
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.4), 0 0 0 0 rgba(229, 57, 53, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(229, 57, 53, 0), 0 0 0 20px rgba(229, 57, 53, 0);
+  }
+}
+
+.animate-ripple {
+  animation: ripple 1.6s infinite ease-out;
+}
+
+/* Glassmorphism settings */
+.glass-header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-header {
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Glow styles */
+.neon-glow-primary {
+  box-shadow: 0 0 15px rgba(229, 57, 53, 0.35);
+}
+
+.neon-glow-success {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.35);
+}
+
+/* ==========================================
+   PREMIUM LIGHT THEME FOR PAINEL ADMIN 🍔
+   ========================================== */
+
+#owner-workspace, #owner-login {
+  font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11" !important;
+}
+
+#owner-workspace h1, 
+#owner-workspace h2, 
+#owner-workspace h3, 
+#owner-login h1,
+#owner-login h2 {
+  font-family: "Poppins", "Inter", sans-serif !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Base screen override container for login */
+#owner-login {
+  background-color: #f8fafc !important; /* Soft premium slate-50 */
+  color: #1e293b !important;
+}
+
+#owner-login .bg-slate-950 {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03) !important;
+  border-radius: 24px !important;
+}
+
+#owner-login h1 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+#owner-login p {
+  color: #64748b !important;
+}
+
+#owner-login label {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+#owner-login input {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  transition: all 0.2s ease !important;
+}
+
+#owner-login input:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
+#owner-login button[type="submit"] {
+  background-color: #0284c7 !important; /* Premium Sky blue */
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15) !important;
+  transition: all 0.2s ease !important;
+}
+
+#owner-login button[type="submit"]:hover {
+  background-color: #0369a1 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Owner Workspace Root */
+#owner-workspace {
+  background-color: #f8fafc !important;
+  color: #334155 !important;
+}
+
+#owner-workspace header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02) !important;
+}
+
+#owner-workspace header h1 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+#owner-workspace header span {
+  background-color: #f0fdf4 !important;
+  color: #166534 !important;
+  border: 1px solid #dcfce7 !important;
+}
+
+#owner-workspace header a {
+  color: #0284c7 !important;
+}
+
+#owner-workspace header button:first-of-type {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+#owner-workspace header button:first-of-type:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Sidebar and Main Cards */
+#owner-workspace .bg-slate-900 {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Sidebar lists grouping spans */
+#owner-workspace span.text-slate-500 {
+  color: #94a3b8 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Sidebar navigation buttons precision override */
+#owner-workspace .lg\:col-span-3 button {
+  background-color: transparent !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important; /* text-xs */
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.2s ease-in-out !important;
+  border-radius: 8px !important;
+  border: none !important;
+}
+
+#owner-workspace .lg\:col-span-3 button:hover {
+  background-color: #f1f5f9 !important;
+  color: #0284c7 !important;
+}
+
+/* Sidebar active navigation buttons */
+#owner-workspace .lg\:col-span-3 button.bg-sky-500 {
+  background-color: #e0f2fe !important; /* Premium soft sky-100 */
+  color: #0369a1 !important; /* Deep Sky-700 */
+  font-weight: 800 !important;
+}
+
+#owner-workspace .lg\:col-span-3 button.bg-sky-500 svg {
+  color: #0284c7 !important;
+}
+
+/* Financial summary card in Sidebar */
+#owner-workspace .lg\:col-span-3 .text-center.space-y-1,
+#owner-workspace .lg\:col-span-3 .bg-slate-900.text-center {
+  background-color: #f0fdf4 !important; /* Soft premium green background */
+  border: 1px solid #bbf7d0 !important;
+  color: #166534 !important;
+}
+
+#owner-workspace .lg\:col-span-3 .text-center.space-y-1 span.text-slate-500 {
+  color: #166534 !important;
+}
+
+#owner-workspace .lg\:col-span-3 .text-center.space-y-1 span.text-slate-400 {
+  color: #14532d !important;
+}
+
+/* Cards (Total billing, hours, status) */
+#owner-workspace .grid .bg-slate-900 {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  transition: all 0.2s ease !important;
+}
+
+#owner-workspace .grid .bg-slate-900:hover {
+  box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+#owner-workspace .grid .bg-slate-900 span.text-slate-400,
+#owner-workspace .grid .bg-slate-900 span.text-slate-450 {
+  color: #64748b !important;
+  font-weight: 500 !important;
+}
+
+#owner-workspace .grid .bg-slate-900 span.text-sky-400 {
+  color: #0284c7 !important;
+}
+
+/* Adjust revenue billing simulator input in card */
+#owner-workspace .grid .bg-slate-900 input {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+#owner-workspace .lg\:col-span-9 .bg-slate-900 button {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+#owner-workspace .lg\:col-span-9 .bg-slate-900 button:hover {
+  background-color: #1e293b !important;
+}
+
+/* Delivery status card open button */
+#owner-workspace .grid button.bg-red-500\/20 {
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
+  border: 1px solid #fca5a5 !important;
+}
+
+#owner-workspace .grid button.bg-red-500\/20:hover {
+  background-color: #fee2e2 !important;
+}
+
+#owner-workspace .grid button.bg-emerald-500 {
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+}
+
+#owner-workspace .grid button.bg-emerald-500:hover {
+  background-color: #059669 !important;
+}
+
+/* Back bars for pico clock hourly flow */
+#owner-workspace .bg-slate-950 {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+#owner-workspace .bg-slate-800,
+#owner-workspace .bg-slate-750,
+#owner-workspace .bg-slate-755 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Heatmap flow custom texts */
+#owner-workspace .text-slate-400 {
+  color: #64748b !important;
+}
+
+#owner-workspace .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+#owner-workspace .text-white {
+  color: #0f172a !important;
+}
+
+/* Best sellers list layout item cards */
+#owner-workspace .bg-slate-950\/40 {
+  background-color: #ffffff !important;
+  border: 1px solid #f1f5f9 !important;
+}
+
+#owner-workspace .bg-slate-950\/40 span.text-slate-500 {
+  color: #cbd5e1 !important;
+}
+
+#owner-workspace .bg-slate-950\/40 p.text-white {
+  color: #1e293b !important;
+  font-weight: 600 !important;
+}
+
+#owner-workspace .bg-slate-950\/40 span.bg-sky-500\/5 {
+  background-color: #f0f9ff !important;
+  color: #0369a1 !important;
+  border: 1px solid #e0f2fe !important;
+}
+
+/* Global inputs, textareas, selects */
+#owner-workspace input[type="text"],
+#owner-workspace input[type="number"],
+#owner-workspace input[type="email"],
+#owner-workspace input[type="password"],
+#owner-workspace select,
+#owner-workspace textarea {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  border-radius: 10px !important;
+}
+
+#owner-workspace input:focus,
+#owner-workspace select:focus,
+#owner-workspace textarea:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12) !important;
+}
+
+/* Action buttons and elements */
+#owner-workspace .bg-sky-500\/10 {
+  background-color: #f0f9ff !important;
+  color: #0284c7 !important;
+  border: 1px solid #e0f2fe !important;
+}
+
+/* Orders List Item Card */
+#owner-workspace .bg-slate-900.border-slate-850.p-5 {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02) !important;
+}
+
+#owner-workspace .bg-slate-950\/60 {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+#owner-workspace .bg-slate-950\/60 strong.text-white {
+  color: #0f172a !important;
+}
+
+/* Order action buttons */
+#owner-workspace button.bg-sky-500.font-semibold {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+#owner-workspace button.bg-sky-500.font-semibold:hover {
+  background-color: #0369a1 !important;
+}
+
+#owner-workspace button.bg-emerald-500.font-semibold {
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+}
+
+#owner-workspace button.bg-emerald-500.font-semibold:hover {
+  background-color: #059669 !important;
+}
+
+#owner-workspace button.bg-red-500\/10.text-red-400 {
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
+  border: 1px solid #fee2e2 !important;
+}
+
+/* General clean up of status colors tags */
+#owner-workspace .bg-amber-500.text-black {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+#owner-workspace .bg-indigo-500.text-white {
+  background-color: #e0e7ff !important;
+  color: #3730a3 !important;
+}
+
+#owner-workspace .bg-slate-700.text-slate-300 {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+}
+
+/* Subtitles, labels and table borders */
+#owner-workspace tr {
+  border-bottom-color: #f1f5f9 !important;
+}
+
+#owner-workspace th {
+  color: #64748b !important;
+  font-weight: 600 !important;
+}
+
+#owner-workspace td {
+  color: #334155 !important;
+}
+
+/* MODALS - Beautiful floating white drawers */
+.fixed.inset-0.bg-black\/80,
+.fixed.inset-0.bg-black\/85 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+#owner-workspace .fixed.inset-0 form,
+.fixed.inset-0 form {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+#owner-workspace .fixed.inset-0 form h3,
+.fixed.inset-0 form h3 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+#owner-workspace .fixed.inset-0 form label,
+.fixed.inset-0 form label {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+#owner-workspace .fixed.inset-0 form button.bg-slate-800,
+.fixed.inset-0 form button[type="button"] {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+}
+
+#owner-workspace .fixed.inset-0 form button.bg-slate-800:hover,
+.fixed.inset-0 form button[type="button"]:hover {
+  background-color: #e2e8f0 !important;
+}
+
+#owner-workspace .fixed.inset-0 form button.bg-sky-500,
+.fixed.inset-0 form button[type="submit"] {
+  background-color: #18181b !important;
+  color: #ffffff !important;
+}
+
+#owner-workspace .fixed.inset-0 form button.bg-sky-500:hover,
+.fixed.inset-0 form button[type="submit"]:hover {
+  background-color: #27272a !important;
+}
+
+/* WhatsApp recovery templates border adjustments */
+#owner-workspace .border-sky-500\/20 {
+  border-color: #e2e8f0 !important;
+}
+
+#owner-workspace .bg-zinc-950 {
+  background-color: #f8fafc !important;
+  color: #334155 !important;
+  border-color: #e2e8f0 !important;
+}
+
+#owner-workspace .text-zinc-400 {
+  color: #64748b !important;
+}
+
+#owner-workspace .text-zinc-100 {
+  color: #0f172a !important;
+}
+
+/* Table grid fixes */
+#owner-workspace .space-y-4 > .overflow-x-auto,
+#owner-workspace table {
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+#owner-workspace tr.bg-slate-950\/10 {
+  background-color: #f8fafc !important;
+}
+
+#owner-workspace .border-slate-800,
+#owner-workspace .border-zinc-800 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Explicit high-contrast text color overrides for dark buttons and active chips */
+#owner-workspace button.bg-zinc-900,
+#owner-workspace button.bg-black,
+#owner-workspace button.bg-zinc-800,
+#owner-workspace button.bg-slate-900,
+#owner-workspace .bg-zinc-900.text-white,
+#owner-workspace .bg-black.text-white,
+#owner-workspace .bg-zinc-900,
+#owner-workspace .bg-black {
+  color: #ffffff !important;
+}
+
+#owner-workspace button.bg-zinc-900 span,
+#owner-workspace button.bg-black span,
+#owner-workspace button.bg-zinc-800 span,
+#owner-workspace button.bg-slate-900 span,
+#owner-workspace .bg-zinc-900 span,
+#owner-workspace .bg-black span {
+  color: #ffffff !important;
+}
+
+#owner-workspace button.bg-white span,
+#owner-workspace button.bg-white {
+  color: #18181b !important;
+}
+
+/* Realtime ringing order card premium visual alert */
+.ringing-order-card {
+  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  border: 2px solid #f59e0b !important; /* Warning gold/amber */
+  background-color: #fffbeb !important; /* Extremely soft warm yellow */
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25) !important;
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.97;
+    transform: scale(1.008);
+  }
+}

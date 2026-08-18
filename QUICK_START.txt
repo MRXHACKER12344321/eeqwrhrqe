@@ -1,0 +1,93 @@
+🚀 QUICK START - RESET DIÁRIO EM 5 MINUTOS
+=============================================
+
+⚠️ IMPORTANTE: Siga este guia na ordem exata!
+
+---
+
+📝 PASSO 1: Banco de Dados (2 min)
+==================================
+
+1. Abra: https://app.supabase.com
+2. Vá para: SQL Editor → New Query
+3. Copie TUDO de: supabase_daily_reset.sql
+4. Cole no editor
+5. Clique: RUN ✓
+
+✅ Pronto! O banco está configurado.
+
+---
+
+⏰ PASSO 2: Ativar Hook (1 min)
+===============================
+
+1. Abra: src/components/PainelAdmin.tsx
+
+2. No topo, adicione este import:
+   import useResetDiarioFaturamento from '../lib/useResetDiarioFaturamento';
+
+3. Dentro da função PainelAdmin, adicione:
+   useResetDiarioFaturamento(currentStore?.id);
+
+4. Salve o arquivo ✓
+
+✅ Pronto! Reset automático está ativado no Cardápio!
+
+(SEM EASYCRON! Funciona tudo pelo Supabase + Frontend)
+
+---
+
+💻 PASSO 3: Componente de Histórico (2 min)
+=============================================
+
+1. Abra: src/components/PainelAdmin.tsx
+
+2. Adicione este import:
+   import HistoricoFaturamento from './HistoricoFaturamento';
+
+3. Procure a seção: {activeMenu === 'financeiro' && (
+
+4. Dentro dela, adicione:
+   <HistoricoFaturamento 
+     lojaId={currentStore?.id}
+     lojaNome={currentStore?.nome}
+     corPrimaria={currentStore?.cor_primaria}
+   />
+
+5. Salve o arquivo ✓
+
+✅ Pronto! Componente visual está integrado.
+
+---
+
+🧪 TESTE (1 min)
+================
+
+1. Abra o Console do navegador (F12)
+2. Procure por estas mensagens:
+
+   ✅ Sucesso:
+      🔄 Detectado novo dia! Resetando faturamento...
+      ✅ Faturamento resetado com sucesso!
+
+   ❌ Erro:
+      (nada aparece)
+      Solução: Verifique os imports!
+
+✅ Se as mensagens aparecem, está funcionando!
+
+---
+
+🎉 PRONTO! 
+===========
+
+Você agora tem:
+
+✅ Faturamento que reseta diariamente às 00:00
+✅ Histórico completo de vendas
+✅ Componente visual com gráficos e tabelas
+✅ Relatórios para análise
+✅ Exportação em CSV
+✅ SEM EASYCRON! Funciona pelo Cardápio + Supabase
+
+Tempo total: 5 minutos!

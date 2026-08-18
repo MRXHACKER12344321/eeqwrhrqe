@@ -1,0 +1,6 @@
+{
+  "name": "Cardápio Digital",
+  "description": "Plataforma de cardápio digital multi-lojas com painel master, administrativo de restaurantes e cardápios interativos para clientes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
